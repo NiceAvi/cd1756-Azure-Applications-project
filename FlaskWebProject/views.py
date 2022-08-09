@@ -87,7 +87,7 @@ def login():
 @app.route(Config.REDIRECT_PATH)
 def authorized():
     print(request.args)
-    if request.args.get('code') != session.get("state"):
+    if request.args.get('state') != session.get("state"):
         return redirect(url_for("home"))  # No-OP. Goes back to Index page
     if "error" in request.args:  # Authentication/Authorization failure
         return render_template("auth_error.html", result=request.args)
