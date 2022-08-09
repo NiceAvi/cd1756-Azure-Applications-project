@@ -86,7 +86,7 @@ def login():
 # Its absolute URL must match your app's redirect_uri set in AAD
 @app.route(Config.REDIRECT_PATH)
 def authorized():
-    if request.args.get('state') != session.get("state"):
+    if request.args.get('code') != session.get("state"):
         return redirect(url_for("home"))  # No-OP. Goes back to Index page
     if "error" in request.args:  # Authentication/Authorization failure
         return render_template("auth_error.html", result=request.args)
