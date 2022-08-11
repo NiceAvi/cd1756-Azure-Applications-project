@@ -1,5 +1,4 @@
 import os
-from urllib import parse
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -15,13 +14,8 @@ class Config(object):
     SQL_USER_NAME = os.environ.get('SQL_USER_NAME') or 'admin123'
     SQL_PASSWORD = os.environ.get('SQL_PASSWORD') or 'admin@123'
     # Below URI may need some adjustments for driver version, based on your OS, if running locally
-    #SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc://' + SQL_USER_NAME + '@' + SQL_SERVER + ':' + SQL_PASSWORD + '@' + SQL_SERVER + ':1433/' + SQL_DATABASE  + '?driver=ODBC+Driver+17+for+SQL+Server'
+    SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc://' + SQL_USER_NAME + '@' + SQL_SERVER + ':' + SQL_PASSWORD + '@' + SQL_SERVER + ':1433/' + SQL_DATABASE  + '?driver=ODBC+Driver+17+for+SQL+Server'
     #SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc://' + SQL_SERVER + '/' + SQL_DATABASE + '?trusted_connection=yes&driver=ODBC+Driver+13+for+SQL+Server'
-    params = parse.quote_plus \
-    (r'Driver={ODBC Driver 13 for SQL Server};Server=tcp:python-db.database.windows.net,1433;Database=admin123;Uid=admin123;Pwd=admin@123;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
-
-    SQLALCHEMY_DATABASE_URI="mssql+pyodbc:///?odbc_connect={}".format(params)
-
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     ### Info for MS Authentication ###
