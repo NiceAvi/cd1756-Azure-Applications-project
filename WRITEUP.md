@@ -9,4 +9,6 @@
 
 ### Assess app changes that would change your decision.
 
-*Detail how the app and any other needs would have to change for you to change your decision in the last section.* 
+*I choose app service becuase, App Service allows me to focus on building the application and it handles the infrastructure. As this project application is lightweight and does not require high performance computing services.
+
+App service is very simple to understand and easy to use.* 
