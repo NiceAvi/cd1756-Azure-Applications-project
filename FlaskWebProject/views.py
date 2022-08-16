@@ -79,6 +79,7 @@ def login():
             next_page = url_for('home')
         return redirect(next_page)
     session["state"] = str(uuid.uuid4())
+    app.logger.info("The user logged in successfully")
     auth_url = _build_auth_url(scopes=Config.SCOPE, state=session["state"])
     return render_template('login.html', title='Sign In', form=form, auth_url=auth_url)
 
@@ -119,6 +120,7 @@ def logout():
         # Wipe out user and its token cache from session
         session.clear()
         # Also logout from your tenant's web session
+        app.logger.info("Logged out")
         return redirect(
             Config.AUTHORITY + "/oauth2/v2.0/logout" +
             "?post_logout_redirect_uri=" + url_for("login", _external=True))
